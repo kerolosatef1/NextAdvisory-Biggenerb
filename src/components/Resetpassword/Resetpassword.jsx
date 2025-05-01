@@ -5,8 +5,10 @@ import * as Yup from 'yup';
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 export default function Resetpassword() {
+    
     const validationSchema = Yup.object({
         email: Yup.string()
             .required('Email is Required')
@@ -15,18 +17,15 @@ export default function Resetpassword() {
 
     const sendurl = async (values) => {
         try {
-            const payload = {
-                email: values.email,
-                clientUrl: `${window.location.origin}/reset-password`
-            };
-            
-            const { data } = await axios.post(
-                `https://timetableapi.runasp.net/api/Auth/forgot-password`,
-                payload
+            await axios.post(
+                'https://timetableapi.runasp.net/api/Auth/forgot-password',
+                {
+                    email: values.email,
+                    clientUrl: `https://timetableapi.runasp.net/api/Auth`
+                }
             );
-            
-            toast.success("Check Your Email ");
-            console.log("API Response:", data);
+            toast.success("Check your email for reset link");
+         
             
         } catch (error) {
             const errorMessage = error.response?.data?.message || "فشل في إرسال الرابط";

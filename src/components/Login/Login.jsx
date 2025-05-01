@@ -110,7 +110,7 @@ export default function Login(){
                         
                     </p>
                     <p>
-                    <NavLink to='/forgetpassword' className="font-medium text-primary-600  dark:text-primary-500">Forget-Password</NavLink>
+                    <NavLink to='/resetpassword' className="font-medium text-primary-600  dark:text-primary-500">Forget-Password</NavLink>
                     </p>
                 </form>
             </div>
